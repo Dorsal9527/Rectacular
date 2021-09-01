@@ -1,0 +1,87 @@
+//Some notes from work trying to figure out vectors and such.
+
+iBall = [105, 250];
+
+list = ds_list_create();
+
+repeat 100
+{
+    var norm = [0,0,choose(c_red,c_green,c_blue)];
+    var _r = random_range(-1,1);
+    var _xory = choose(0,1);
+    
+    if ( _xory == 1 )
+    {
+        norm[@ 0] = _r;
+        var _b = norm[@ 0];
+        norm[@ 1] = sqrt( (1*1) -  (_b*_b) ) * choose(1,-1);
+    } else
+    {
+        norm[@ 1] = _r;
+        var _b = norm[@ 1];
+        norm[@ 0] = sqrt( (1*1) -  (_b*_b) ) * choose(1,-1);
+    }
+
+
+
+    ds_list_add(list, norm);
+}
+
+frame = 0;
+
+
+#define step
+frame++;
+
+
+/*
+//repeat 10
+//{
+    var norm = [0,0,choose(c_red,c_green,c_blue)];
+    var _r = random_range(-1,1);
+    var _xory = choose(0,1);
+    
+    if ( _xory == 1 )
+    {
+        norm[@ 0] = _r;
+        var _b = norm[@ 0];
+        norm[@ 1] = sqrt( (1*1) -  (_b*_b) ) * choose(1,-1);
+    } else
+    {
+        norm[@ 1] = _r;
+        var _b = norm[@ 1];
+        norm[@ 0] = sqrt( (1*1) -  (_b*_b) ) * choose(1,-1);
+    }
+
+
+
+    ds_list_add(list, norm);
+//}
+
+*/
+
+#define draw
+
+
+for ( var i = 0; i < ds_list_size(list); i++)
+{
+    var _item = list[| i];
+    
+    _x = 100 + _item[@ 0] * 25;// ( _item[@ 0] * 50 );
+    _y = 100 + _item[@ 1] * 25;//( _item[@ 1] * 50 );
+    
+    var co = _item[@ 2];//
+    draw_set_color(co);
+    draw_line(100,100,_x,_y);
+}
+
+//draw_circle(iBall[@ 0], iBall[@ 1], 5, false );
+
+//if ( frame < ds_list_size(list) )
+//{
+ //   var _item = list[| frame];
+    
+ //   iBall[@ 0] = iBall[@ 0] + _item[@ 0] * 5;
+//    iBall[@ 1] = iBall[@ 1] + _item[@ 1] * 5;
+ //   
+//}
