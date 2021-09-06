@@ -545,8 +545,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "Blown",
+    "path": "folders/Sprites/Blown.yy",
   },
   "resourceVersion": "1.0",
   "name": "sBrickBlown",

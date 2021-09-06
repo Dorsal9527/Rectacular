@@ -1,5 +1,16 @@
-if ( keyboard_check_pressed(vk_enter) )
+
+
+if ( amDead == false )
 {
-	//show_debug_message("test");
-	physics_apply_impulse(x,y,0, 200);
+	if ( collisions > breaking_point + 1 )
+	{
+		phy_active = false;
+		sprite_index = sRedBallBlown;
+		image_index = 0;
+		image_speed = 1;
+		amDead = true;
+	} else if ( collisions > breaking_point )
+	{
+		image_index = 1;
+	}
 }
